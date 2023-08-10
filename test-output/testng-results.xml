@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-06-13T14:21:35 IST" name="Command line suite" finished-at="2023-06-13T14:22:00 IST" duration-ms="24913">
+    <groups>
+    </groups>
+    <test started-at="2023-06-13T14:21:35 IST" name="Command line test" finished-at="2023-06-13T14:22:00 IST" duration-ms="24913">
+      <class name="org.example.seleniumproject">
+        <test-method is-config="true" signature="browserinvoke()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:35 IST" name="browserinvoke" finished-at="2023-06-13T14:21:44 IST" duration-ms="8676" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserinvoke -->
+        <test-method signature="inputElementTest()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:44 IST" name="inputElementTest" finished-at="2023-06-13T14:21:47 IST" duration-ms="3022" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- inputElementTest -->
+        <test-method signature="radioComponentTest()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:47 IST" name="radioComponentTest" finished-at="2023-06-13T14:21:53 IST" duration-ms="5525" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- radioComponentTest -->
+        <test-method signature="selectElementTest()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:53 IST" name="selectElementTest" finished-at="2023-06-13T14:21:53 IST" duration-ms="223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectElementTest -->
+        <test-method signature="submitButton()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:53 IST" name="submitButton" finished-at="2023-06-13T14:21:53 IST" duration-ms="87" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitButton -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:org.example.seleniumproject@4fcd19b3]" started-at="2023-06-13T14:21:53 IST" name="closeBrowser" finished-at="2023-06-13T14:22:00 IST" duration-ms="7275" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- org.example.seleniumproject -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>
