@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" debug="false">
+
+    <!-- Define the color theme for logback-extensions -->
+    <property name="LOG_COLOR_THEME" value="CONSOLE_THEME"/>
+
+    <!-- Import logback-extensions color themes -->
+    <include resource="org/logbackextensions/xml/color-themes.xml"/>
+
+    <!-- Define the CONSOLE_APPENDER -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>
+                ${CONSOLE_PREFIX:-}%highlight(%d %-4relative [%thread] %-5level %cyan(%logger{45}) - %msg%n){CONSOLE_THEME}
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define the root logger -->
+    <root level="ALL">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
