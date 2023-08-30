@@ -19,6 +19,7 @@ import java.io.FileInputStream;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+
 public class seleniumproject extends TestBase {
     WebDriver driver;
 
@@ -28,60 +29,32 @@ public class seleniumproject extends TestBase {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://demo.seleniumeasy.com/input-form-demo.html");
-        LOGGER.info("Browser Invoke");
+        log.info("Browser Invoke");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @Test
-    public void getTitels() {
-        LOGGER.info(driver.getTitle());
+    public void gettittle() {
+        log.info(driver.getTitle());
     }
 
     @Test
     public void printLink() {
         List<WebElement> allLinkElements = driver.findElements(By.tagName("a")).stream().filter(WebElement::isDisplayed).toList();
-        LOGGER.info("Total Links Found 1st one : " + allLinkElements.size());
+        // log.info(Level.parse("DEBUG"),"All Links::");
+        log.info("Test Logger info");
+        log.debug("Test logger debug");
+        log.error("Test Logger error");
+        log.warn("Test logger warning");
+        log.trace("Test Logger trace");
+        // log.debug("Test logger debug");
         allLinkElements.forEach(element -> {
             String text = element.getText();
             String href = element.getAttribute("href");
-            LOGGER.info("Text [" + text + "] has href as : " + href);
+            log.info("Text [" + text + "] has href as : " + href);
         });
     }
 
-    /* @Test
-     public void inputElementTest() {
-         List<String> inputData = Arrays.asList(
-                 "abcd",
-                 "efgh",
-                 "abcd@gmail.com",
-                 "1234567890",
-                 "Hinjewadi Pune,Maharastra",
-                 "Pune",
-                 "1057",
-                 "www.google.com",
-                 "CP-SET Certified"
-         );
-         LOGGER.info("WebSite Title: " + driver.getTitle());
-         LOGGER.info("Current URL: " + driver.getCurrentUrl());
-         List<String> inputFields = Arrays.asList(
-                 "first_name",
-                 "last_name",
-                 "email",
-                 "phone",
-                 "address",
-                 "city",
-                 "zip",
-                 "website",
-                 "comment"
-         );
-         for (int i = 0; i < inputData.size(); i++) {
-             String field = inputFields.get(i);
-             String value = inputData.get(i);
-             driver.findElement(By.name(field)).sendKeys(value);
-             LOGGER.info("Input Fields::"+field);
-             LOGGER.info("Value::"+value);
-         }
-     }*/
     @Test
     public void inputElementTest1() {
         Map<String, String> input = new HashMap<>();
@@ -94,48 +67,42 @@ public class seleniumproject extends TestBase {
         input.put("zip", "1057");
         input.put("website", "www.google.com");
         input.put("comment", "CP-SET Certified");
-
-        LOGGER.info("WebSite Title: " + driver.getTitle());
-        LOGGER.info("Current URL: " + driver.getCurrentUrl());
-
+        log.info("WebSite Title: " + driver.getTitle());
+        log.info("Current URL: " + driver.getCurrentUrl());
         for (Map.Entry<String, String> entry : input.entrySet()) {
             String field = entry.getKey();
             String value = entry.getValue();
             driver.findElement(By.name(field)).sendKeys(value);
-            LOGGER.info("Input Fields::" + field);
-            LOGGER.info("Value::" + value);
+            log.info("Input Fields::" + field);
+            log.info("Value::" + value);
         }
     }
 
-
-    // ...
- /*   @Test
+    @Test
     public void inputElementTest() {
         try {
             FileInputStream excelFile = new FileInputStream(new File("C:\\Users\\smsub\\OneDrive\\Desktop\\readData.xlsx"));
             Workbook workbook = new XSSFWorkbook(excelFile);
             Sheet sheet = workbook.getSheetAt(0); // Replace with your sheet name
 
-            LOGGER.info("WebSite Title: " + driver.getTitle());
-            LOGGER.info("Current URL: " + driver.getCurrentUrl());
-
+            log.info("WebSite Title: " + driver.getTitle());
+            log.info("Current URL: " + driver.getCurrentUrl());
             for (int rowIndex = 1; rowIndex <= sheet.getLastRowNum(); rowIndex++) {
                 Row row = sheet.getRow(rowIndex);
-
-                String field = row.getCell(0).getStringCellValue(); // Assuming field name is in the first column
-                String value = row.getCell(1).getStringCellValue(); // Assuming value is in the second column
-
+                String field = row.getCell(0).getStringCellValue();
+                String value = row.getCell(1).getStringCellValue();
                 driver.findElement(By.name(field)).sendKeys(value);
-                LOGGER.info("Input Fields::" + field);
-                LOGGER.info("Value::" + value);
+                log.info("Input Fields::" + field);
+                log.info("Value::" + value);
+                log.atDebug().log();
             }
-
             workbook.close();
             excelFile.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
     @Test
     public void selectElementTest() {
         WebElement selectElement = driver.findElement(By.name("state"));
@@ -162,7 +129,7 @@ public class seleniumproject extends TestBase {
     @Test
     public void windowsSwitch() {
         driver.get("https://demo.actitime.com/user/submit_tt.do");
-        LOGGER.info("Current Windows Titels::" + driver.getTitle());
+        log.info("Current Windows Titels::" + driver.getTitle());
         String currentWindowHandle = driver.getWindowHandle();
         Set<String> windowHandles = driver.getWindowHandles();
         // Switch to the new window
@@ -178,30 +145,27 @@ public class seleniumproject extends TestBase {
         driver.findElement(By.name("pwd")).sendKeys("manager");
         driver.findElement(By.id("loginButton")).click();
         driver.findElement(By.id("container_reports")).click();
-        LOGGER.info("Task Titels::::::::" + driver.getTitle());
+        log.info("Task Titels::::::::" + driver.getTitle());
         driver.findElement(By.id("reportConfig_88")).click();
-
         List<WebElement> elements = driver.findElements(By.xpath("//td[@class='content-cell']"));
         if (elements.size() >= 3) {
             WebElement thirdElement = elements.get(2);
             String thirdElementText = thirdElement.getText();
         } else {
-            LOGGER.info("No Third Element available");
+            log.info("No Third Element available");
         }
-
     }
 
     @Test
     public void printAllLink() {
         List<WebElement> allLinkElements = driver.findElements(By.tagName("a")).stream().filter(WebElement::isDisplayed).toList();
-        LOGGER.info("Total Links Found : " + allLinkElements.size());
+        log.info("Total Links Found : " + allLinkElements.size());
         allLinkElements.forEach(element -> {
             String text = element.getText();
             String href = element.getAttribute("href");
-            LOGGER.info("Text [" + text + "] has href as : " + href);
+            log.info("Text [" + text + "] has href as : " + href);
         });
     }
-
 
     @AfterClass
     public void closeBrowser() throws InterruptedException {

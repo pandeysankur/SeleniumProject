@@ -10,7 +10,7 @@ public class TestClasses extends TestBase {
 
     @BeforeClass
     public void setUp() {
-        LOGGER.info("Setting up the WebDriver");
+        log.info("Setting up the WebDriver");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -19,12 +19,12 @@ public class TestClasses extends TestBase {
 
     @Test
     public void yourTestMethod() {
-        LOGGER.info(driver.getTitle());
+        log.info(driver.getTitle());
     }
 
     @AfterClass
     public void tearDown() {
-        LOGGER.info("Closing the WebDriver");
+        log.info("Closing the WebDriver");
         if (driver != null) {
             driver.quit();
         }
