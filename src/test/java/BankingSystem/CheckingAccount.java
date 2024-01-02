@@ -8,7 +8,7 @@ public class CheckingAccount extends Account {
             super(accountNumber, initialBalance);
             this.overdraftLimit = overdraftLimit;
         }
-        @Override
+
         public void withdraw(double amount) {
             if (amount > 0 && (getBalance() + overdraftLimit) >= amount) {
                 setBalance(getBalance() - amount);
