@@ -9,6 +9,7 @@ public class MagicMatrix {
                 {4, 5, 7},
                 {6, 1, 6}};
         System.out.println("Anand");
+        System.out.println("priya");
 
         List<Integer> number = new ArrayList<>();
         for (int k = 1; k <= 9; k++) {
