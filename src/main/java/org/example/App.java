@@ -10,6 +10,8 @@ public class App {
       String [] nums=new String[]{"10","021","11"};
         Arrays.sort(nums);
         System.out.println(Arrays.toString(nums));
+        System.out.println();
+
 
 
     }
