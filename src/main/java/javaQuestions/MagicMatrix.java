@@ -8,6 +8,7 @@ public class MagicMatrix {
         int[][] magicSquare = {{4, 8, 2},
                 {4, 5, 7},
                 {6, 1, 6}};
+        System.out.println("Anand");
 
         List<Integer> number = new ArrayList<>();
         for (int k = 1; k <= 9; k++) {
