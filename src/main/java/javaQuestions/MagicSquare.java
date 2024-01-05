@@ -5,67 +5,95 @@ import java.util.List;
 
 public class MagicSquare {
     public static void main(String[] args) {
-        int[][] MagicSquare = {{5, 3, 4},
-                {1, 5, 8},
-                {6, 4, 2}};
-
-        int SumListOne = MagicSquare[0][0] + MagicSquare[0][1] + MagicSquare[0][2];
-        int SumListTwo = MagicSquare[1][0] + MagicSquare[1][1] + MagicSquare[1][2];
-        int SumListThree = MagicSquare[2][0] + MagicSquare[2][1] + MagicSquare[2][2];
-        int SumListFour = MagicSquare[0][0] + MagicSquare[1][0] + MagicSquare[2][0];
-        int SumListFive = MagicSquare[0][1] + MagicSquare[1][1] + MagicSquare[2][1];
-        int SumListSix = MagicSquare[0][2] + MagicSquare[1][2] + MagicSquare[2][2];
-        int SumListSeven = MagicSquare[0][0] + MagicSquare[1][1] + MagicSquare[2][2];
-        int SumListEight = MagicSquare[0][2] + MagicSquare[1][1] + MagicSquare[2][0];
-
-
-
-
-        List<int []> list=new ArrayList<>();
-
-
-        if (SumListOne != 15) {
-            System.out.println("SumListOne");
-        }
-        if (SumListTwo != 15) {
-            System.out.println("SumListTwo");
-        }
-        if (SumListThree != 15) {
-            System.out.println("SumListThree");
-        }
-        if (SumListFour != 15) {
-            System.out.println("SumListFour");
-        }
-        if (SumListFive != 15) {
-            System.out.println("SumListFive");
-        }
-        if (SumListSix != 15) {
-            System.out.println("SumListSix");
-        }
-        if (SumListSeven != 15) {
-            System.out.println("SumListSeven");
-        }
-        if (SumListEight != 15) {
-            System.out.println("SumListEight");
-        }
-
+        int[][] magicSquare = {{4, 8, 2},
+                {4, 5, 7},
+                {6, 1, 6}};
         List<Integer> number = new ArrayList<>();
         for (int k = 1; k <= 9; k++) {
             number.add(k);
         }
-        System.out.println(number);
-        List<Integer> repetativeList = new ArrayList<>();
 
-
-        for (int i = 0; i < MagicSquare.length; i++) {
-            for (int j = 0; j < MagicSquare.length; j++) {
-                if (number.contains(Integer.valueOf(MagicSquare[i][j]))) {
-                    number.remove(Integer.valueOf(MagicSquare[i][j]));
+        List<Integer> repetitiveList = new ArrayList<>();
+        for (int i = 0; i < magicSquare.length; i++) {
+            for (int j = 0; j < magicSquare.length; j++) {
+                if (number.contains(Integer.valueOf(magicSquare[i][j]))) {
+                    number.remove(Integer.valueOf(magicSquare[i][j]));
                 } else {
-                    repetativeList.add(Integer.valueOf(MagicSquare[i][j]));
+                    repetitiveList.add(Integer.valueOf(magicSquare[i][j]));
                 }
             }
         }
+        System.out.println("Repetitive Value: "+repetitiveList);
+
+
+        List<int[]> list = new ArrayList<>();
+        if (magicSquare[0][0] + magicSquare[1][1] + magicSquare[2][2] != 15) {
+            list.add(new int[]{magicSquare[0][0], magicSquare[1][1], magicSquare[2][2]});
+        }
+        if (magicSquare[0][2] + magicSquare[1][1] + magicSquare[2][0] != 15) {
+            list.add(new int[]{magicSquare[0][2], magicSquare[1][1], magicSquare[2][0]});
+        }
+        if (magicSquare[0][1] + magicSquare[1][1] + magicSquare[2][1] != 15) {
+            list.add(new int[]{magicSquare[0][1], magicSquare[1][1], magicSquare[2][1]});
+        }
+        if (magicSquare[0][1] + magicSquare[1][1] + magicSquare[1][2] != 15) {
+            list.add(new int[]{magicSquare[0][1], magicSquare[1][1], magicSquare[1][2]});
+        }
+
+        //
+        int cost = 0;
+        for (int[] arrayElement : list) {
+
+            int firstValue = arrayElement[0];
+            int secondValue = arrayElement[1];
+            int thirdValue = arrayElement[2];
+            int missingValue = 0;
+            if (secondValue!=5){
+                repetitiveList.add(secondValue);
+            }
+            else {
+
+            }
+            if (repetitiveList.contains(Integer.valueOf(firstValue))) {
+                missingValue = 15 - (firstValue + secondValue + thirdValue);
+                int missingNumber = firstValue + missingValue;
+                if(missingValue <0){
+                    continue;
+                }
+                if (!repetitiveList.contains(missingNumber)) {
+                    repetitiveList.add(Integer.valueOf(missingNumber));
+                }
+                repetitiveList.remove(Integer.valueOf(firstValue));
+                cost = cost + missingValue;
+                continue;
+            }
+            if (repetitiveList.contains(Integer.valueOf(secondValue))) {
+                missingValue = 15 - (firstValue + secondValue + thirdValue);
+                int missingNumber = secondValue + missingValue;
+                if(missingValue <0){
+                    continue;
+                }
+                if (!repetitiveList.contains(missingNumber)) {
+                    repetitiveList.add(Integer.valueOf(missingNumber));
+                }
+                repetitiveList.remove(Integer.valueOf(secondValue));
+                cost = cost + missingValue;
+                continue;
+            }
+            if (repetitiveList.contains(Integer.valueOf(thirdValue))) {
+                missingValue = 15 - (firstValue + secondValue + thirdValue);
+                int missingNumber = thirdValue + missingValue;
+                if(missingValue <0){
+                    continue;
+                }
+                if (!repetitiveList.contains(missingNumber)) {
+                    repetitiveList.add(Integer.valueOf(missingNumber));
+                }
+                repetitiveList.remove(Integer.valueOf(thirdValue));
+                cost = cost + missingValue;
+            }
+        }
+        System.out.println("Cost:: "+cost);
     }
 }
 
